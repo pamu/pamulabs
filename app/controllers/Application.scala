@@ -1,8 +1,11 @@
 package controllers
 
+import constants.Constants
+import global.Global
 import play.api.libs.json._
 import play.api.mvc.{Action, Controller}
 import play.api.libs.functional.syntax._
+import utils.Utils
 
 object Application extends Controller {
 
@@ -22,7 +25,9 @@ object Application extends Controller {
     request.body.validate[Contact] match {
       case js: JsSuccess[Contact] =>
         val contact = js.get
-        println(contact.toString)
+        Global.emailActor ! actors.EmailActor.Email(Constants.email, Constants.email,
+          s"Message from ${contact.name}", Utils.htmlBody(contact.name, contact.email,
+            contact.phone, contact.message))
         Ok(Json.obj("status" -> "success"))
       case error: JsError => Status(BAD_REQUEST)
     }
