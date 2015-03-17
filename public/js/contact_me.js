@@ -17,17 +17,23 @@ $(function() {
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
+
+            var obj = {};
+            obj["name"] = name;
+            obj["email"] = email;
+            obj["phone"] = phone;
+            obj["message"] = message;
+            var json = JSON.stringify(obj);
+
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "/contactMe",
                 type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
+                data: json,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: true,
                 cache: false,
-                success: function() {
+                success: function(msg) {
                     // Success message
                     $('#success').html("<div class='alert alert-success'>");
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -40,7 +46,7 @@ $(function() {
                     //clear all fields
                     $('#contactForm').trigger("reset");
                 },
-                error: function() {
+                error: function(msg) {
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
