@@ -7,5 +7,5 @@ object Constants {
   val hostName = "smtp.gmail.com"
   val port = 465
   val email = "pamulabs@gmail.com"
-  val pass = "pamu@pamulabs"
+  val pass = "pamu@pamulabs@2015"
 }

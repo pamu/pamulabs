@@ -6,7 +6,7 @@ package utils
 object Utils {
   def htmlBody(name: String, email: String, phno: String, message: String): String =
     s"""
-      |<pre style="font-family:arial;">
+      |<pre style="font-family:arial,monospace;">
       |I am $name
       |
       |Contact Details
