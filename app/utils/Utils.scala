@@ -6,7 +6,7 @@ package utils
 object Utils {
   def htmlBody(name: String, email: String, phno: String, message: String): String =
     s"""
-      |<p style="font-family:arial;">
+      |<pre style="font-family:arial;">
       |I am $name
       |
       |Contact Details
@@ -14,6 +14,6 @@ object Utils {
       |Phno $phno
       |
       |$message
-      |</p>
+      |</pre>
     """.stripMargin
 }
