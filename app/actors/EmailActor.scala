@@ -40,7 +40,7 @@ class EmailActor extends Actor with ActorLogging {
 
     case Success(status)    =>     log.info("Email Sent :) {}", status)
     case Failure(cause)     =>     log.info("Email failed {}", cause.getCause)
-    case x: String          =>     println(x)
+    case x: String          =>     log.info(x)
     case _                  =>     log.info("unknown message")
   }
 }
