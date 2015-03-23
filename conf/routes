@@ -4,6 +4,7 @@
 
 GET     /                           controllers.Application.index()
 POST    /contactMe                  controllers.Application.contactMe()
+GET     /blog                       controllers.Application.blog()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

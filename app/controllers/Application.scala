@@ -33,4 +33,6 @@ object Application extends Controller {
     }
   }
 
+  def blog() = TODO
+
 }
